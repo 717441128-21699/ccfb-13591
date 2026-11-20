@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基桩低应变反射波法智能分析系统</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <h1>基桩低应变反射波法 · 智能分析系统</h1>
+        <div class="controls">
+          <label class="field">桩数
+            <input type="number" id="pile-count" value="300" min="10" max="600" />
+          </label>
+          <label class="field">随机种子
+            <input type="number" id="seed" value="20261120" />
+          </label>
+          <button class="primary" id="btn-run" data-action>合成并分析</button>
+          <button id="btn-demo300" data-action>300 桩演示</button>
+          <button id="btn-export" data-action>导出 CSV 报告</button>
+        </div>
+        <div class="progress-bar"><div style="width:0%"></div></div>
+        <span class="status-text">就绪</span>
+      </header>
+      <main>
+        <section class="panel">
+          <h2>
+            桩位平面图
+            <div class="summary-chips" id="summary-chips"></div>
+          </h2>
+          <div class="plan-wrap">
+            <canvas id="plan-canvas" class="plan"></canvas>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><span class="dot" style="background:#4caf50"></span>Ⅰ类 完整</span>
+            <span class="legend-item"><span class="dot" style="background:#ffc107"></span>Ⅱ类 轻微</span>
+            <span class="legend-item"><span class="dot" style="background:#ff9800"></span>Ⅲ类 明显</span>
+            <span class="legend-item"><span class="dot" style="background:#f44336"></span>Ⅳ类 严重</span>
+            <span class="legend-item"><span class="dot" style="background:transparent;border:2px dashed #ab47bc"></span>存疑复核</span>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>单桩详情与判读</h2>
+          <div class="detail-wrap" id="detail-wrap">
+            <div class="empty-hint">
+              点击左侧平面图中的桩位查看详情<br /><br />
+              颜色：绿=Ⅰ类 黄=Ⅱ类 橙=Ⅲ类 红=Ⅳ类<br />
+              紫色虚环=存疑（需人工复核）
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
